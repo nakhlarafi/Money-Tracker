@@ -73,15 +73,22 @@ public class RegistrationController implements Initializable {
             }
             else{
                 if(pasw.equals(pasw1)){
+                pasw = Password.getSaltedHash(pasw);
                 String sql = "insert into USERINFO "+ " (NAME, EMAIL, USERID,PASSWORD,QUE)" + " values (?, ?, ?,?,?)";
                 ps=con.prepareStatement(sql);
                 ps.setString(1, txName.getText());
                 ps.setString(2, txEmail.getText());
                 ps.setString(3, uname);
-                ps.setString(4, Password.getSaltedHash(txPass.getText()));
+                ps.setString(4, pasw);
                 ps.setString(5, txQue.getText());
                 ps.executeUpdate();
-               txLabel.setText("Done");
+                txLabel.setText("Done");
+                String sql2 = "insert into password "+ " (USERID,PASSWORD)" + " values (?, ?)";
+                ps=con.prepareStatement(sql2);
+                ps.setString(1, uname);
+                ps.setString(2, pasw);
+                ps.executeUpdate();
+               
                 }
                 else{
                     txLabel.setText("Password doesn't match.");
