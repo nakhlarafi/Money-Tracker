@@ -19,6 +19,7 @@ public class FXMLDocumentController {
     Connection con = MyConnection.connectdb();
     PreparedStatement ps;
     ResultSet rs;
+    public static String myUsername;
     
      /*public FXMLDocumentController() {
         initComponents();
@@ -44,6 +45,7 @@ public class FXMLDocumentController {
     public void Login(ActionEvent event) throws Exception{
         try{
             String name = txtUsername.getText();
+            myUsername = name;
             String pasw = txPass.getText();
             String login="SELECT password,userid FROM NAKHLA054.USERINFO WHERE USERID='"+name+"'";
             ps= con.prepareStatement(login); 

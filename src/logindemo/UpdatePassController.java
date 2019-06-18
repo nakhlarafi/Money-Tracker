@@ -46,8 +46,6 @@ public class UpdatePassController implements Initializable  {
             List<String> arraList = new ArrayList();
             System.out.println("ki beta");
             pass = txNewPass.getText();
-            //System.out.println(pass);
-            //String pasw = txConfirm.getText();
             String username = ForgetController.usern;
             System.out.println("ki beta");
             System.out.println("ken vai?"+username);
@@ -58,7 +56,6 @@ public class UpdatePassController implements Initializable  {
             rs=ps.executeQuery();
             
             while (rs.next()) {
-                //System.err.println(rs.getString(1));
                 arraList.add(rs.getString(1));
             }
             Iterator i = arraList.iterator();
