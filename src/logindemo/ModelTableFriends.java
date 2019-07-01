@@ -10,12 +10,15 @@ package logindemo;
  * @author Nakhla
  */
 public class ModelTableFriends {
-    String name,email;
+    String name,userid,owe,gets;
 
-    public ModelTableFriends(String name, String email) {
+    public ModelTableFriends(String name, String userid,String owe,String gets) {
         this.name = name;
-        this.email = email;
+        this.userid = userid;
+        this.owe = owe;
+        this.gets = gets;
     }
+
 
     public String getName() {
         return name;
@@ -25,14 +28,28 @@ public class ModelTableFriends {
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUserid() {
+        return userid;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUserid(String userid) {
+        this.userid = userid;
     }
     
+    public String getOwe() {
+        return owe;
+    }
+
+    public void setOwe(String owe) {
+        this.owe = owe;
+    }
     
+    public String getGets() {
+        return gets;
+    }
+
+    public void setGets(String gets) {
+        this.gets = gets;
+    }
     
 }

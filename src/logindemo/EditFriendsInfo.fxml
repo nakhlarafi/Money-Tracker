@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="logindemo.EditFriendsInfoController">
+   <children>
+      <Label fx:id="txName" layoutX="65.0" layoutY="111.0" text="Name" />
+      <Label fx:id="txUserid" layoutX="185.0" layoutY="111.0" text="User Id" />
+      <Label fx:id="txOwe" layoutX="286.0" layoutY="111.0" text="He owe me" />
+      <Label fx:id="txGets" layoutX="410.0" layoutY="111.0" text="He gets from me" />
+   </children>
+</AnchorPane>

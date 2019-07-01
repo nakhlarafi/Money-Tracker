@@ -9,16 +9,18 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logindemo.FriendsController">
    <children>
-      <Label layoutX="44.0" layoutY="57.0" text="Want to add friends?" />
-      <TextField layoutX="21.0" layoutY="85.0" prefHeight="26.0" prefWidth="158.0" promptText="Write your firends email id." />
-      <Button layoutX="81.0" layoutY="120.0" mnemonicParsing="false" text="Add" />
+      <Label fx:id="lblStatus" layoutX="44.0" layoutY="57.0" text="Want to add friends?" />
+      <TextField fx:id="txFriend" layoutX="21.0" layoutY="85.0" prefHeight="26.0" prefWidth="158.0" promptText="Write your firends user id." />
+      <Button layoutX="81.0" layoutY="120.0" mnemonicParsing="false" onAction="#addFriends" text="Add" />
       <Label layoutX="411.0" layoutY="39.0" text="Friends List" />
-      <TableView fx:id="table" layoutX="267.0" layoutY="71.0" prefHeight="312.0" prefWidth="322.0">
+      <TableView fx:id="table" layoutX="209.0" layoutY="71.0" prefHeight="312.0" prefWidth="380.0">
         <columns>
-          <TableColumn fx:id="col_name" prefWidth="120.79998779296875" text="Name" />
-          <TableColumn fx:id="col_email" prefWidth="200.80002441406248" text="Email" />
+          <TableColumn fx:id="col_name" prefWidth="115.20001220703125" text="Name" />
+          <TableColumn fx:id="col_userid" prefWidth="97.5999755859375" text="User ID" />
+            <TableColumn fx:id="col_owe" prefWidth="84.800048828125" text="Owe" />
+            <TableColumn fx:id="col_gets" prefWidth="88.0" text="Gets" />
         </columns>
       </TableView>
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Button" />
+      <Button fx:id="txBack" layoutX="29.0" layoutY="343.0" mnemonicParsing="false" onAction="#back" text="Back" />
    </children>
 </AnchorPane>
