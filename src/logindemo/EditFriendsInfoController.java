@@ -51,7 +51,7 @@ public class EditFriendsInfoController implements Initializable {
     private TextField txTook;
     
     @FXML
-    private Label txUpdate;
+    private Label txUpdates;
     
     
     @Override
@@ -84,13 +84,13 @@ public class EditFriendsInfoController implements Initializable {
         
         Statement smt = con.createStatement();
         int rl=smt.executeUpdate(sql);
+        
         if(rl == 0){
-            txUpdate.setText("Not Updated");
+            txUpdates.setText("Not Updated");
         }else{
-            txUpdate.setText("Updated!");
+            txUpdates.setText("Updated!");
         }
-
-            
+        System.out.println("aise");    
         } catch (Exception e) {
             System.out.println(e);
         }

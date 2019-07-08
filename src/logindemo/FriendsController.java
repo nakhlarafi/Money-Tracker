@@ -79,7 +79,7 @@ public class FriendsController implements Initializable {
                 ps.setString(1, frnd);
                 ps.setString(2, username);
                 ps.executeUpdate();
-                
+                //table.setItems(oblist);
                 
                 lblStatus.setText("Done");
         
