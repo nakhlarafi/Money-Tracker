@@ -73,6 +73,14 @@ public class FriendsController implements Initializable {
                 ps.setString(1, username);
                 ps.setString(2, frnd);
                 ps.executeUpdate();
+            String sql2 = "insert into FRIENDS "+ " (userid, friends_userid)" + " values (?, ?)";
+                
+                ps=con.prepareStatement(sql);
+                ps.setString(1, frnd);
+                ps.setString(2, username);
+                ps.executeUpdate();
+                
+                
                 lblStatus.setText("Done");
         
         } catch (Exception e) {

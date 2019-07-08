@@ -1,14 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="logindemo.EditFriendsInfoController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logindemo.EditFriendsInfoController">
    <children>
-      <Label fx:id="txName" layoutX="65.0" layoutY="111.0" text="Name" />
-      <Label fx:id="txUserid" layoutX="185.0" layoutY="111.0" text="User Id" />
-      <Label fx:id="txOwe" layoutX="286.0" layoutY="111.0" text="He owe me" />
-      <Label fx:id="txGets" layoutX="410.0" layoutY="111.0" text="He gets from me" />
+      <Label fx:id="txName" layoutX="36.0" layoutY="46.0" text="Name">
+         <font>
+            <Font size="31.0" />
+         </font></Label>
+      <Label fx:id="txUserid" layoutX="40.0" layoutY="93.0" text="User Id" />
+      <Label fx:id="txOwe" layoutX="473.0" layoutY="92.0" prefHeight="18.0" prefWidth="82.0" text="owe" />
+      <Label fx:id="txGets" layoutX="469.0" layoutY="191.0" text="He gets from me" />
+      <TextField fx:id="txGave" layoutX="36.0" layoutY="187.0" promptText="in TAKA" />
+      <Text layoutX="40.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="I gave him" wrappingWidth="109.60003662109375">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <Button layoutX="36.0" layoutY="223.0" mnemonicParsing="false" onAction="#gaveHim" text="Add" />
+      <Text layoutX="36.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="I took from him" wrappingWidth="148.79999999999995">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txTook" layoutX="36.0" layoutY="301.0" promptText="in TAKA" />
+      <Button layoutX="36.0" layoutY="336.0" mnemonicParsing="false" text="Add" />
+      <Text layoutX="440.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="I owe him" wrappingWidth="109.60003662109375">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <Text layoutX="440.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="I get from him" wrappingWidth="148.79999999999995">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <Label fx:id="txUpdates" layoutX="440.0" layoutY="305.0" text="Label" />
    </children>
 </AnchorPane>
