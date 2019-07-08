@@ -29,7 +29,7 @@
          </font>
       </Text>
       <TextField fx:id="txTook" layoutX="36.0" layoutY="301.0" promptText="in TAKA" />
-      <Button layoutX="36.0" layoutY="336.0" mnemonicParsing="false" text="Add" />
+      <Button layoutX="36.0" layoutY="336.0" mnemonicParsing="false" onAction="#tookFromHim" text="Add" />
       <Text layoutX="440.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="I owe him" wrappingWidth="109.60003662109375">
          <font>
             <Font size="21.0" />
@@ -40,6 +40,7 @@
             <Font size="21.0" />
          </font>
       </Text>
-      <Label fx:id="txUpdates" layoutX="440.0" layoutY="305.0" text="Label" />
+      <Label fx:id="txUpdates" layoutX="286.0" layoutY="29.0" text="Label" />
+      <Button layoutX="524.0" layoutY="361.0" mnemonicParsing="false" onAction="#back" text="Back" />
    </children>
 </AnchorPane>

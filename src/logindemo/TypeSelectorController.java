@@ -37,7 +37,7 @@ public class TypeSelectorController implements Initializable {
     
     public void Friends(ActionEvent event) throws IOException{
         try {
-            Parent signIn = FXMLLoader.load(getClass().getResource("Friends.fxml"));
+                    Parent signIn = FXMLLoader.load(getClass().getResource("Friends.fxml"));
                     Scene signInScene = new Scene(signIn);
                     Stage window = (Stage)((Node) event.getSource()).getScene().getWindow();
                     window.setTitle("Which one?");

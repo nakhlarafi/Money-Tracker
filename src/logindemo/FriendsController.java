@@ -80,7 +80,8 @@ public class FriendsController implements Initializable {
                 ps.setString(2, username);
                 ps.executeUpdate();
                 //table.setItems(oblist);
-                
+                oblist.clear();
+                initialize(null,null);
                 lblStatus.setText("Done");
         
         } catch (Exception e) {
@@ -107,6 +108,7 @@ public class FriendsController implements Initializable {
             rs = con.createStatement().executeQuery(query);
             
             while (rs.next()) {
+                
                 oblist.add(new ModelTableFriends(rs.getString("NAME"), rs.getString("USERID"),rs.getString("OWE"),rs.getString("GETS")));
             }
         } catch (SQLException ex) {
@@ -138,7 +140,6 @@ public class FriendsController implements Initializable {
                     Loader.load();
                 } catch (IOException ex) {
                  ex.printStackTrace();
-                    
                     Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 
@@ -148,9 +149,11 @@ public class FriendsController implements Initializable {
                         table.getSelectionModel().getSelectedItem().getOwe(),
                         table.getSelectionModel().getSelectedItem().getGets());
                 Parent p = Loader.getRoot();
-                Stage stage = new Stage();
-                stage.setScene(new Scene(p));
-                stage.show();
+                Scene signInScene = new Scene(p);
+                    Stage window = (Stage)((Node) event.getSource()).getScene().getWindow();
+                    window.setTitle("Which one?");
+                    window.setScene(signInScene);
+                    window.show();
             }
         });
     }    
