@@ -92,6 +92,7 @@ public class EditFriendsInfoController implements Initializable {
         txGets.setText(Integer.toString(addGets));
         txOwe.setText(Integer.toString(addOwe));
         String sql = "update FRIENDS set owe="+addOwe+",gets ="+addGets+" where userid='"+usernameMe+"' and friends_userid='"+userid+"'";
+        String sql2 = "update FRIENDS set owe="+addGets+",gets ="+addOwe+" where userid='"+userid+"' and friends_userid='"+usernameMe+"'";
         
         Statement smt = con.createStatement();
         int rl=smt.executeUpdate(sql);
@@ -101,6 +102,9 @@ public class EditFriendsInfoController implements Initializable {
         }else{
             txUpdates.setText("Updated!");
         }
+        smt = con.createStatement();
+        rl=smt.executeUpdate(sql2);
+        
         System.out.println("aise");
         //initialize(null,null);
         } catch (Exception e) {
@@ -127,6 +131,7 @@ public class EditFriendsInfoController implements Initializable {
             owe = Integer.toString(hereOwe);
        
             String sql = "update FRIENDS set owe="+hereOwe+",gets ="+hereGet+" where userid='"+usernameMe+"' and friends_userid='"+userid+"'";
+            String sql2 = "update FRIENDS set owe="+hereGet+",gets ="+hereOwe+" where userid='"+userid+"' and friends_userid='"+usernameMe+"'";
             
             Statement smt = con.createStatement();
             int rl=smt.executeUpdate(sql);
@@ -137,6 +142,9 @@ public class EditFriendsInfoController implements Initializable {
             }else{
                 txUpdates.setText("Updated!");
             }
+            smt = con.createStatement();
+            rl=smt.executeUpdate(sql2);
+            
             System.out.println("aise");
             //initialize(null,null);
             
