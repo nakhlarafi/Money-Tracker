@@ -11,15 +11,18 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 /**
@@ -32,8 +35,12 @@ public class RequestAcceptController implements Initializable {
     Connection con = MyConnection.connectdb();
     ResultSet rs,rs2;
     PreparedStatement ps = null;
-    
     String myUserid,frndUserid,name,status;
+    
+    @FXML
+    private Label lblStatus;
+    
+    @FXML
     public void acceptRequest(ActionEvent event) throws IOException{
         String sql = "insert into FRIENDS "+ " (userid, friends_userid)" + " values (?, ?)";
         try {
@@ -50,20 +57,26 @@ public class RequestAcceptController implements Initializable {
             
             String deleteSql = "DELETE FROM NAKHLA054.REQUEST WHERE NAME = '"+name+"' AND MY_USERID = '"+myUserid+"' AND FRND_USERID = '"+frndUserid+"' AND STATUS = 'pending'";
             
+             Statement smt = con.createStatement();
+             int rl=smt.executeUpdate(deleteSql);
+            lblStatus.setText("Accepted!");
             
-            
-            Parent signIn = FXMLLoader.load(getClass().getResource("FriendsController.fxml"));
-            Scene signInScene = new Scene(signIn);
-            Stage window = (Stage)((Node) event.getSource()).getScene().getWindow();
-            //window.setTitle("Which one?");
-            window.setScene(signInScene);
-            window.show();
+            Parent signIn = FXMLLoader.load(getClass().getResource("Friends.fxml"));
+                    Scene signInScene = new Scene(signIn);
+                    Stage window = (Stage)((Node) event.getSource()).getScene().getWindow();
+                    //window.setTitle("Which one?");
+                    window.setScene(signInScene);
+                    window.show();
                 
         } catch (SQLException ex) {
             Logger.getLogger(RequestAcceptController.class.getName()).log(Level.SEVERE, null, ex);
         }
                 
-    }  
+    } 
+    @FXML
+    public void back(ActionEvent event) throws IOException{
+        
+    }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
