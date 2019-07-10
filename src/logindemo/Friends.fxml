@@ -7,20 +7,28 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logindemo.FriendsController">
+<AnchorPane id="AnchorPane" prefHeight="555.0" prefWidth="1019.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logindemo.FriendsController">
    <children>
-      <Label fx:id="lblStatus" layoutX="44.0" layoutY="57.0" text="Want to add friends?" />
-      <TextField fx:id="txFriend" layoutX="21.0" layoutY="85.0" prefHeight="26.0" prefWidth="158.0" promptText="Write your firends user id." />
-      <Button layoutX="81.0" layoutY="120.0" mnemonicParsing="false" onAction="#addFriends" text="Add" />
-      <Label layoutX="411.0" layoutY="39.0" text="Friends List" />
-      <TableView fx:id="table" layoutX="209.0" layoutY="71.0" prefHeight="312.0" prefWidth="380.0">
+      <Label fx:id="lblStatus" layoutX="81.0" layoutY="56.0" text="Want to add friends?" />
+      <TextField fx:id="txFriend" layoutX="58.0" layoutY="85.0" prefHeight="26.0" prefWidth="158.0" promptText="Write your firends user id." />
+      <Button layoutX="110.0" layoutY="120.0" mnemonicParsing="false" onAction="#addFriends" text="Add" />
+      <Label layoutX="674.0" layoutY="103.0" text="Friends List" />
+      <Button fx:id="txBack" layoutX="14.0" layoutY="516.0" mnemonicParsing="false" onAction="#back" text="Back" />
+      <TableView fx:id="table" layoutX="462.0" layoutY="145.0" prefHeight="312.0" prefWidth="484.0">
         <columns>
-          <TableColumn fx:id="col_name" prefWidth="115.20001220703125" text="Name" />
-          <TableColumn fx:id="col_userid" prefWidth="97.5999755859375" text="User ID" />
-            <TableColumn fx:id="col_owe" prefWidth="84.800048828125" text="Owe" />
-            <TableColumn fx:id="col_gets" prefWidth="88.0" text="Gets" />
+          <TableColumn fx:id="col_name" prefWidth="107.0" text="Name" />
+          <TableColumn fx:id="col_userid" prefWidth="119.0" text="User ID" />
+            <TableColumn fx:id="col_owe" prefWidth="89.0" text="Owe" />
+            <TableColumn fx:id="col_gets" minWidth="0.0" prefWidth="82.0" text="Gets" />
+            <TableColumn fx:id="col_gets1" prefWidth="85.0" text="Status" />
         </columns>
       </TableView>
-      <Button fx:id="txBack" layoutX="29.0" layoutY="343.0" mnemonicParsing="false" onAction="#back" text="Back" />
+      <TableView fx:id="tableRequest" layoutX="35.0" layoutY="200.0" prefHeight="254.0" prefWidth="388.0">
+        <columns>
+          <TableColumn fx:id="rq_userid" prefWidth="89.0" text="Userid" />
+          <TableColumn fx:id="rq_name" prefWidth="146.0" text="Name" />
+            <TableColumn fx:id="rq_status" prefWidth="152.0" text="Status" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>
