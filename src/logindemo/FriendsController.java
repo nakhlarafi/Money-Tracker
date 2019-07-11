@@ -106,18 +106,19 @@ public class FriendsController implements Initializable {
                 initialize(null,null);
                 lblStatus.setText("Done");*/
             String frnd = txFriend.getText();
-            String frndQueryName = "select name  from USERINFO where USERID='"+frnd+"'";
-            String friendName = "";
+            String frndQueryName = "select name  from USERINFO where USERID='"+username+"'";
+            String name = "";
             rs = con.createStatement().executeQuery(frndQueryName);
             if(rs.next()){
-                friendName = rs.getString(1);
+                name = rs.getString(1);
+                //System.out.println(friendName);
             }
             String sql = "insert into REQUEST "+ " (MY_USERID, FRND_USERID, NAME)" + " values (?, ?, ?)";
            
             ps=con.prepareStatement(sql);
             ps.setString(1, frnd);
             ps.setString(2, username);
-            ps.setString(3, friendName);
+            ps.setString(3, name);
             ps.executeUpdate();
             oblist.clear();
             initialize(null,null);

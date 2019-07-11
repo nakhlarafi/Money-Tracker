@@ -10,10 +10,10 @@ package logindemo;
  * @author 16101197
  */
 public class TableRequest {
-    String name,myUserid,frndUserid,status;
+    String frndName,myUserid,frndUserid,status;
 
-    public TableRequest(String name, String myUserid, String frndUserid, String status) {
-        this.name = name;
+    public TableRequest(String frndName, String myUserid, String frndUserid, String status) {
+        this.frndName = frndName;
         this.myUserid = myUserid;
         this.frndUserid = frndUserid;
         this.status = status;
@@ -21,11 +21,11 @@ public class TableRequest {
 
 
     public String getName() {
-        return name;
+        return frndName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        frndName = name;
     }
 
     public String getMyUserid() {
