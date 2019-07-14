@@ -14,8 +14,14 @@
             <Font size="31.0" />
          </font></Label>
       <Label fx:id="txUserid" layoutX="40.0" layoutY="93.0" text="User Id" />
-      <Label fx:id="txOwe" layoutX="473.0" layoutY="92.0" prefHeight="18.0" prefWidth="82.0" text="owe" />
-      <Label fx:id="txGets" layoutX="469.0" layoutY="191.0" text="He gets from me" />
+      <Label fx:id="txOwe" alignment="CENTER" layoutX="470.0" layoutY="97.0" prefHeight="18.0" prefWidth="82.0" text="owe">
+         <font>
+            <Font name="Agency FB Bold" size="18.0" />
+         </font></Label>
+      <Label fx:id="txGets" alignment="CENTER" contentDisplay="CENTER" layoutX="488.0" layoutY="189.0" text="He gets">
+         <font>
+            <Font name="Agency FB Bold" size="18.0" />
+         </font></Label>
       <TextField fx:id="txGave" layoutX="36.0" layoutY="187.0" promptText="in TAKA" />
       <Text layoutX="40.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="I gave him" wrappingWidth="109.60003662109375">
          <font>
@@ -30,17 +36,18 @@
       </Text>
       <TextField fx:id="txTook" layoutX="36.0" layoutY="301.0" promptText="in TAKA" />
       <Button layoutX="36.0" layoutY="336.0" mnemonicParsing="false" onAction="#tookFromHim" text="Add" />
-      <Text layoutX="440.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="I owe him" wrappingWidth="109.60003662109375">
+      <Text layoutX="462.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="I owe him" wrappingWidth="98.60003662109375">
          <font>
             <Font size="21.0" />
          </font>
       </Text>
-      <Text layoutX="440.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="I get from him" wrappingWidth="148.79999999999995">
+      <Text layoutX="437.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="I get from him" wrappingWidth="148.79999999999995">
          <font>
             <Font size="21.0" />
          </font>
       </Text>
       <Label fx:id="txUpdates" layoutX="286.0" layoutY="29.0" text="Label" />
-      <Button layoutX="524.0" layoutY="361.0" mnemonicParsing="false" onAction="#back" text="Back" />
+      <Button layoutX="529.0" layoutY="349.0" mnemonicParsing="false" onAction="#back" text="Back" />
+      <Button layoutX="269.0" layoutY="349.0" mnemonicParsing="false" onAction="#unfriend" text="Unfriend" />
    </children>
 </AnchorPane>

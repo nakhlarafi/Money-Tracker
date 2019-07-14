@@ -36,6 +36,7 @@ public class EditFriendsInfoController implements Initializable {
     ResultSet rs = null;
     
     String name,userid, owe, gets;
+    public static String setUserid;
     String usernameMe = FXMLDocumentController.myUsername;
     @FXML
     private Label txName;
@@ -162,11 +163,22 @@ public class EditFriendsInfoController implements Initializable {
     }
     
     
+    @FXML
+    public void unfriend(ActionEvent event) throws IOException{
+        Parent signIn = FXMLLoader.load(getClass().getResource("Unfriend.fxml"));
+        Scene signInScene = new Scene(signIn);
+        Stage window = (Stage)((Node) event.getSource()).getScene().getWindow();
+        //window.setTitle("Which one?");
+        window.setScene(signInScene);
+        window.show();
+    }
+    
     
     public void setData(String name, String userid, String owe, String gets) {
         
         this.name = name;
         this.userid = userid;
+        setUserid = userid;
         this.owe = owe;
         this.gets = gets;
         txName.setText(name);
