@@ -6,13 +6,18 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" prefHeight="555.0" prefWidth="1019.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logindemo.FriendsController">
    <children>
-      <Label fx:id="lblStatus" layoutX="81.0" layoutY="56.0" text="Want to add friends?" />
-      <TextField fx:id="txFriend" layoutX="58.0" layoutY="85.0" prefHeight="26.0" prefWidth="158.0" promptText="Write your firends user id." />
-      <Button layoutX="110.0" layoutY="120.0" mnemonicParsing="false" onAction="#addFriends" text="Add" />
-      <Label layoutX="674.0" layoutY="103.0" text="Friends List" />
+      <Label fx:id="lblStatus" layoutX="54.0" layoutY="28.0" text="Want to add friends?" />
+      <TextField fx:id="txFriend" layoutX="31.0" layoutY="53.0" prefHeight="26.0" prefWidth="158.0" promptText="Write your firends user id." />
+      <Button layoutX="90.0" layoutY="90.0" mnemonicParsing="false" onAction="#addFriends" text="Add" />
+      <Label layoutX="462.0" layoutY="104.0" text="Friends List">
+         <font>
+            <Font name="Agency FB Bold" size="18.0" />
+         </font></Label>
       <Button fx:id="txBack" layoutX="14.0" layoutY="516.0" mnemonicParsing="false" onAction="#back" text="Back" />
       <TableView fx:id="table" layoutX="462.0" layoutY="145.0" prefHeight="312.0" prefWidth="484.0">
         <columns>
@@ -30,5 +35,11 @@
             <TableColumn fx:id="rq_status" prefWidth="152.0" text="Status" />
         </columns>
       </TableView>
+      <Text layoutX="34.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Friend Requests" wrappingWidth="111.19999999999999">
+         <font>
+            <Font name="Agency FB Bold" size="18.0" />
+         </font>
+      </Text>
+      <TextField fx:id="search" layoutX="630.0" layoutY="102.0" onKeyReleased="#search" promptText="Search" />
    </children>
 </AnchorPane>
