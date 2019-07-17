@@ -8,11 +8,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.input.MouseEvent;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -21,11 +24,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 /**
@@ -33,7 +38,7 @@ import javafx.stage.Stage;
  *
  * @author Nakhla
  */
-public class FriendsController implements Initializable {
+public class FriendsController implements Initializable  {
     
     Connection con = MyConnection.connectdb();
     ResultSet rs,rs2;
@@ -70,7 +75,10 @@ public class FriendsController implements Initializable {
     Table Variables for Request
     */
     
-     @FXML
+    @FXML
+    private TextField search;
+    
+    @FXML
     private TableView<TableRequest> tableRequest;
     
     @FXML
@@ -86,7 +94,12 @@ public class FriendsController implements Initializable {
     ObservableList<ModelTableFriends> oblist = FXCollections.observableArrayList();
     
     ObservableList<TableRequest> oblistRequests = FXCollections.observableArrayList();
+    @FXML
+    private Button txBack;
+    @FXML
+    private TableColumn<?, ?> col_gets1;
     
+    @FXML
     public void addFriends(ActionEvent event) throws SQLException{
         try { 
             /*String sql = "insert into FRIENDS "+ " (userid, friends_userid)" + " values (?, ?)";
@@ -129,6 +142,7 @@ public class FriendsController implements Initializable {
         
     }
     
+    @FXML
     public void back(ActionEvent event) throws IOException{
                     Parent signIn = FXMLLoader.load(getClass().getResource("TypeSelector.fxml"));
                     Scene signInScene = new Scene(signIn);
@@ -137,6 +151,12 @@ public class FriendsController implements Initializable {
                     window.setScene(signInScene);
                     window.show();
     }
+    
+    
+    FilteredList filter = new FilteredList(oblist, e->true);
+    
+    
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -245,5 +265,30 @@ public class FriendsController implements Initializable {
         
         
     }    
+
+    @FXML
+    private void search(KeyEvent event) {
+        search.textProperty().addListener((observable, oldValue, newValue) -> {
+            
+            filter.setPredicate((Predicate<?  super ModelTableFriends>) (ModelTableFriends std)->{
+                if(newValue.isEmpty() || newValue==null){
+                    return true;
+                }
+                else if(std.getUserid().contains(newValue)){
+                    return true;
+                }
+                else if(std.getName().contains(newValue)){
+                    return true;
+                }
+                
+                return false;
+            });
+            
+        });
+        
+        SortedList sort = new SortedList(filter);
+        sort.comparatorProperty().bind(table.comparatorProperty());
+        table.setItems(sort);
+    }
     
 }
