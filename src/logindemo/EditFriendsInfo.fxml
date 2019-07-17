@@ -48,6 +48,6 @@
       </Text>
       <Label fx:id="txUpdates" layoutX="286.0" layoutY="29.0" text="Label" />
       <Button layoutX="529.0" layoutY="349.0" mnemonicParsing="false" onAction="#back" text="Back" />
-      <Button layoutX="269.0" layoutY="349.0" mnemonicParsing="false" onAction="#unfriend" text="Unfriend" />
+      <Button layoutX="269.0" layoutY="336.0" mnemonicParsing="false" onAction="#unfriend" text="Unfriend" />
    </children>
 </AnchorPane>
