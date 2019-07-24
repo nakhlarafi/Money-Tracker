@@ -59,14 +59,14 @@ public class UnfriendController implements Initializable {
          }
     }
     
-    @FXML
+   
     public void back(ActionEvent event) throws IOException{
-        Parent signIn = FXMLLoader.load(getClass().getResource("EditFriends.fxml"));
-        Scene signInScene = new Scene(signIn);
-        Stage window = (Stage)((Node) event.getSource()).getScene().getWindow();
-        //window.setTitle("Which one?");
-        window.setScene(signInScene);
-        window.show();
+                    Parent signIn = FXMLLoader.load(getClass().getResource("EditFriendsInfo.fxml"));
+                    Scene signInScene = new Scene(signIn);
+                    Stage window = (Stage)((Node) event.getSource()).getScene().getWindow();
+                    //window.setTitle("Which one?");
+                    window.setScene(signInScene);
+                    window.show();
     }
     
     

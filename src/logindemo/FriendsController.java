@@ -264,7 +264,17 @@ public class FriendsController implements Initializable  {
         });
         
         
-    }    
+    }
+    
+    @FXML
+    public void Logout(ActionEvent event) throws IOException{
+        Parent signIn = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+                    Scene signInScene = new Scene(signIn);
+                    Stage window = (Stage)((Node) event.getSource()).getScene().getWindow();
+                    //window.setTitle("Which one?");
+                    window.setScene(signInScene);
+                    window.show();
+    }
 
     @FXML
     private void search(KeyEvent event) {

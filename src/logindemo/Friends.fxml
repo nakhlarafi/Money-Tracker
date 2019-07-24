@@ -41,5 +41,6 @@
          </font>
       </Text>
       <TextField fx:id="search" layoutX="630.0" layoutY="102.0" onKeyReleased="#search" promptText="Search" />
+      <Button layoutX="946.0" layoutY="516.0" mnemonicParsing="false" onAction="#Logout" text="Logout" />
    </children>
 </AnchorPane>

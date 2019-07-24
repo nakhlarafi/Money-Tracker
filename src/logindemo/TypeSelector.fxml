@@ -11,7 +11,7 @@
             <Font size="27.0" />
          </font>
       </Button>
-      <Button fx:id="txGroups" layoutX="355.0" layoutY="143.0" mnemonicParsing="false" prefHeight="114.0" prefWidth="133.0" text="Groups">
+      <Button fx:id="txGroups" layoutX="355.0" layoutY="143.0" mnemonicParsing="false" onAction="#Go" prefHeight="114.0" prefWidth="133.0" text="Groups">
          <font>
             <Font size="27.0" />
          </font>
