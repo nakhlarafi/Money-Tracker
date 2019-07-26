@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="555.0" prefWidth="1019.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logindemo.GroupEditController">
+   <children>
+      <Label fx:id="lblGroupName" layoutX="14.0" layoutY="14.0" prefHeight="57.0" prefWidth="110.0" text="Group Name">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblGroupId" layoutX="14.0" layoutY="63.0" text="Group ID" />
+      <Text layoutX="14.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="I spent" wrappingWidth="70.15975570678711">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txTaka" layoutX="10.0" layoutY="122.0" promptText="Tk" />
+      <Button layoutX="13.0" layoutY="158.0" mnemonicParsing="false" text="Add" />
+      <TableView fx:id="table" layoutX="344.0" layoutY="148.0" prefHeight="312.0" prefWidth="578.0">
+         <columns>
+            <TableColumn fx:id="col_name" prefWidth="153.60003662109375" text="Name" />
+            <TableColumn fx:id="col_owe" prefWidth="114.4000244140625" text="Owe" />
+            <TableColumn fx:id="col_gets" prefWidth="99.2000732421875" text="Gets" />
+            <TableColumn fx:id="col_total" minWidth="0.0" prefWidth="126.39984130859375" text="Total Expense" />
+            <TableColumn fx:id="col_userid" prefWidth="88.79998779296875" text="Userid" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>

@@ -19,7 +19,7 @@ public class FXMLDocumentController {
     Connection con = MyConnection.connectdb();
     PreparedStatement ps;
     ResultSet rs;
-    public static String myUsername;
+    public static String myUsername,onlyName;
     
      /*public FXMLDocumentController() {
         initComponents();
@@ -47,12 +47,13 @@ public class FXMLDocumentController {
             String name = txtUsername.getText();
             myUsername = name;
             String pasw = txPass.getText();
-            String login="SELECT password,userid FROM NAKHLA054.USERINFO WHERE USERID='"+name+"'";
+            String login="SELECT password,userid,name FROM NAKHLA054.USERINFO WHERE USERID='"+name+"'";
             ps= con.prepareStatement(login); 
             rs=ps.executeQuery();
             if(rs.next()){
               String x = rs.getString(1);
               String y = rs.getString(2);
+              onlyName = rs.getString(3);
                 System.out.println(y);
                 boolean xx = Password.check(pasw, x);
                 if(xx){
