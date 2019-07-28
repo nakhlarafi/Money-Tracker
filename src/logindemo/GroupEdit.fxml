@@ -11,19 +11,19 @@
 
 <AnchorPane id="AnchorPane" prefHeight="555.0" prefWidth="1019.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logindemo.GroupEditController">
    <children>
-      <Label fx:id="lblGroupName" layoutX="14.0" layoutY="14.0" prefHeight="57.0" prefWidth="110.0" text="Group Name">
+      <Label fx:id="lblGroupName" layoutX="22.0" layoutY="14.0" prefHeight="57.0" prefWidth="110.0" text="Group Name">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="lblGroupId" layoutX="14.0" layoutY="63.0" text="Group ID" />
-      <Text layoutX="14.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="I spent" wrappingWidth="70.15975570678711">
+      <Label fx:id="lblGroupId" layoutX="22.0" layoutY="63.0" text="Group ID" />
+      <Text layoutX="22.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="I spent" wrappingWidth="70.15975570678711">
          <font>
             <Font size="19.0" />
          </font>
       </Text>
-      <TextField fx:id="txTaka" layoutX="10.0" layoutY="122.0" promptText="Tk" />
-      <Button layoutX="13.0" layoutY="158.0" mnemonicParsing="false" text="Add" />
+      <TextField fx:id="txTaka" layoutX="19.0" layoutY="122.0" promptText="Tk" />
+      <Button layoutX="19.0" layoutY="158.0" mnemonicParsing="false" text="Add" />
       <TableView fx:id="table" layoutX="344.0" layoutY="148.0" prefHeight="312.0" prefWidth="578.0">
          <columns>
             <TableColumn fx:id="col_name" prefWidth="153.60003662109375" text="Name" />
@@ -33,5 +33,14 @@
             <TableColumn fx:id="col_userid" prefWidth="88.79998779296875" text="Userid" />
          </columns>
       </TableView>
+      <Label fx:id="lblMessage" layoutX="19.0" layoutY="210.0" text="Add members">
+         <font>
+            <Font size="17.0" />
+         </font></Label>
+      <TextField fx:id="txAddMem" layoutX="19.0" layoutY="236.0" promptText="Userid" />
+      <Button layoutX="19.0" layoutY="265.0" mnemonicParsing="false" onAction="#addFriend" text="Add" />
+      <Label fx:id="lblExpense" layoutX="19.0" layoutY="333.0" text="Add expense" />
+      <TextField fx:id="txExpense" layoutX="19.0" layoutY="351.0" />
+      <Button layoutX="21.0" layoutY="377.0" mnemonicParsing="false" onAction="#addExpense" text="Button" />
    </children>
 </AnchorPane>
