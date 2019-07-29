@@ -34,5 +34,6 @@
          </font>
       </Text>
       <Button layoutX="45.0" layoutY="214.0" mnemonicParsing="false" onAction="#goToCreateGroup" prefHeight="76.0" prefWidth="130.0" text="Create a group" />
+      <Button layoutX="19.0" layoutY="509.0" mnemonicParsing="false" onAction="#back" text="Back" />
    </children>
 </AnchorPane>

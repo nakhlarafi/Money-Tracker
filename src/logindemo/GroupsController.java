@@ -126,7 +126,15 @@ public class GroupsController implements Initializable {
     }
     
     
-    
+    @FXML
+    public void back(ActionEvent event) throws IOException{
+                    Parent signIn = FXMLLoader.load(getClass().getResource("TypeSelector.fxml"));
+                    Scene signInScene = new Scene(signIn);
+                    Stage window = (Stage)((Node) event.getSource()).getScene().getWindow();
+                    window.setTitle("Which one?");
+                    window.setScene(signInScene);
+                    window.show();
+    }
     
     public void goToCreateGroup(ActionEvent event) throws IOException{
         Parent signIn = FXMLLoader.load(getClass().getResource("CreateGroup.fxml"));
