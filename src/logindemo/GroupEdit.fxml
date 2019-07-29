@@ -27,20 +27,20 @@
       <TableView fx:id="table" layoutX="344.0" layoutY="148.0" prefHeight="312.0" prefWidth="578.0">
          <columns>
             <TableColumn fx:id="col_name" prefWidth="153.60003662109375" text="Name" />
-            <TableColumn fx:id="col_owe" prefWidth="114.4000244140625" text="Owe" />
-            <TableColumn fx:id="col_gets" prefWidth="99.2000732421875" text="Gets" />
+            <TableColumn fx:id="col_owe" prefWidth="114.4000244140625" text="Owe or Get" />
             <TableColumn fx:id="col_total" minWidth="0.0" prefWidth="126.39984130859375" text="Total Expense" />
             <TableColumn fx:id="col_userid" prefWidth="88.79998779296875" text="Userid" />
          </columns>
       </TableView>
       <Label fx:id="lblMessage" layoutX="19.0" layoutY="210.0" text="Add members">
          <font>
-            <Font size="17.0" />
+            <Font name="System Bold" size="17.0" />
          </font></Label>
       <TextField fx:id="txAddMem" layoutX="19.0" layoutY="236.0" promptText="Userid" />
       <Button layoutX="19.0" layoutY="265.0" mnemonicParsing="false" onAction="#addFriend" text="Add" />
       <Label fx:id="lblExpense" layoutX="19.0" layoutY="333.0" text="Add expense" />
       <TextField fx:id="txExpense" layoutX="19.0" layoutY="351.0" />
-      <Button layoutX="21.0" layoutY="377.0" mnemonicParsing="false" onAction="#addExpense" text="Button" />
+      <Button layoutX="20.0" layoutY="383.0" mnemonicParsing="false" onAction="#addExpense" text="Button" />
+      <Button layoutX="897.0" layoutY="516.0" mnemonicParsing="false" onAction="#back" text="Back" />
    </children>
 </AnchorPane>

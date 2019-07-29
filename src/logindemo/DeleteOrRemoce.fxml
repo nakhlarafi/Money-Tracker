@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="logindemo.DeleteOrRemoceController">
+   <children>
+      <Text layoutX="243.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Want to remove him?" />
+      <Button layoutX="252.0" layoutY="187.0" mnemonicParsing="false" onAction="#deleteMember" text="Yes" />
+      <Button layoutX="324.0" layoutY="187.0" mnemonicParsing="false" onAction="#back" text="No" />
+      <Text layoutX="219.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="He own or gets=" />
+      <Label fx:id="lblTotal" layoutX="343.0" layoutY="264.0" text="Label" />
+   </children>
+</AnchorPane>

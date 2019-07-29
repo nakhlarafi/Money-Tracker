@@ -5,6 +5,7 @@
  */
 package logindemo;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,13 +18,21 @@ import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+import static logindemo.GroupsController.groupNameGoes;
 
 
 public class GroupEditController implements Initializable {
@@ -34,7 +43,8 @@ public class GroupEditController implements Initializable {
     PreparedStatement ps = null;
     String  groupId = GroupsController.groupNameGoes;
     String username = FXMLDocumentController.myUsername;
-    
+    public static int totalCheck= 0,globalCount=0;
+    String adminCheck = "";
     @FXML
     private Label lblGroupName;
     
@@ -85,7 +95,8 @@ public class GroupEditController implements Initializable {
         try {
             //Queries for updating the tables
             //String query = "select *  from USERINFO inner join MEMBERS on MEMBERS.USERID=USERINFO.USERID and MEMBERS.GROUPID='"+groupId+"'";
-           
+            lblGroupName.setText(groupNameGoes);
+            lblGroupId.setText(groupId);
             String query = "select * from MEMBERS WHERE GROUPID='"+groupId+"'";
             //"SELECT NAME,EMAIL FROM NAKHLA054.FRIENDS"
             
@@ -96,16 +107,61 @@ public class GroupEditController implements Initializable {
                 oblist.add(new TableGroupEdit(rs.getString("GROUPID"), rs.getString("USERID"),rs.getInt("GETS")
                         ,rs.getInt("OWES"),rs.getString("NAME"),rs.getInt("USEREXPENSE")));
             }
+            
+            String query2 = "select * from GROUPS WHERE GROUPID='"+groupId+"'";
+            //"SELECT NAME,EMAIL FROM NAKHLA054.FRIENDS"
+            
+            rs = con.createStatement().executeQuery(query2);
+            
+            while (rs.next()) {
+                //System.out.println("aise");
+                adminCheck = rs.getString("ADMIN");
+            }
+            
+            
+            
         } catch (SQLException ex) {
             Logger.getLogger(FriendsController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         col_name.setCellValueFactory(new PropertyValueFactory<>("name"));
         col_owe.setCellValueFactory(new PropertyValueFactory<>("owes"));
-        col_gets.setCellValueFactory(new PropertyValueFactory<>("gets"));
+        //col_gets.setCellValueFactory(new PropertyValueFactory<>("gets"));
         col_total.setCellValueFactory(new PropertyValueFactory<>("total"));
         col_userid.setCellValueFactory(new PropertyValueFactory<>("userId"));
         table.setItems(oblist);
+        
+        
+        if(adminCheck.equals(username)){
+        table.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event){
+                
+                FXMLLoader Loader = new FXMLLoader();
+                Loader.setLocation(getClass().getResource("DeleteOrRemoce.fxml"));
+                totalCheck = table.getSelectionModel().getSelectedItem().getOwes();
+                try {
+                    Loader.load();
+                } catch (IOException ex) {
+                 ex.printStackTrace();
+                    Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                
+                DeleteOrRemoceController deleteOrRemoceController = Loader.getController();
+                
+                deleteOrRemoceController.setData(table.getSelectionModel().getSelectedItem().getGroupId(), 
+                        table.getSelectionModel().getSelectedItem().getTotal(),
+                        table.getSelectionModel().getSelectedItem().getUserId());
+                        Parent p = Loader.getRoot();
+                    Scene signInScene = new Scene(p);
+                    Stage window = (Stage)((Node) event.getSource()).getScene().getWindow();
+                    window.setTitle("Groups");
+                    window.setScene(signInScene);
+                    window.show();
+            }
+        });
+        }
         
     }    
 
@@ -151,6 +207,16 @@ public class GroupEditController implements Initializable {
     }
     
     @FXML
+    public void back(ActionEvent event) throws IOException{
+         Parent signIn = FXMLLoader.load(getClass().getResource("Groups.fxml"));
+                    Scene signInScene = new Scene(signIn);
+                    Stage window = (Stage)((Node) event.getSource()).getScene().getWindow();
+                    window.setTitle("Which one?");
+                    window.setScene(signInScene);
+                    window.show();
+    }
+    
+    @FXML
     public void addExpense(ActionEvent event) throws SQLException{
         try {
             int expense = Integer.parseInt(txExpense.getText());
@@ -164,6 +230,7 @@ public class GroupEditController implements Initializable {
             rs = con.createStatement().executeQuery(sql);
             while (rs.next()) {
                 count = rs.getInt(1);
+                globalCount = count;
             }
             
             sql = "SELECT * FROM MEMBERS WHERE GROUPID='"+groupId+"' AND USERID='"+username+"'";
@@ -206,6 +273,7 @@ public class GroupEditController implements Initializable {
                 }
                 oblist.clear();
                 initialize(null,null);
+                
             //String sql = "update MEMBERS set OWES="+hereOwe+",gets ="+hereGet+" where userid='"+usernameMe+"' and friends_userid='"+userid+"'";
         } catch (SQLException ex) {
             Logger.getLogger(GroupEditController.class.getName()).log(Level.SEVERE, null, ex);

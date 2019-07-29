@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -47,6 +49,15 @@ public class RegistrationController implements Initializable {
     
     //String hashPass = getHash((txPass.getText()).getBytes(), "SHA-256");
     
+    public static final Pattern VALID_EMAIL_ADDRESS_REGEX = 
+    Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+
+    public static boolean validate(String emailStr) {
+        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX .matcher(emailStr);
+        return matcher.find();
+    }
+    
+    
     public String getHash(byte[] inputBytes, String algorithm){
         String hashValue = "";
         try {
@@ -73,22 +84,33 @@ public class RegistrationController implements Initializable {
             }
             else{
                 if(pasw.equals(pasw1)){
-                pasw = Password.getSaltedHash(pasw);
-                String sql = "insert into USERINFO "+ " (NAME, EMAIL, USERID,PASSWORD,QUE)" + " values (?, ?, ?,?,?)";
-                ps=con.prepareStatement(sql);
-                ps.setString(1, txName.getText());
-                ps.setString(2, txEmail.getText());
-                ps.setString(3, uname);
-                ps.setString(4, pasw);
-                ps.setString(5, txQue.getText());
-                ps.executeUpdate();
-                txLabel.setText("Done");
-                String sql2 = "insert into password "+ " (USERID,PASSWORD)" + " values (?, ?)";
-                ps=con.prepareStatement(sql2);
-                ps.setString(1, uname);
-                ps.setString(2, pasw);
-                ps.executeUpdate();
-               
+                    if(pasw.length()>=7){
+                    if(validate(txEmail.getText())){
+                    
+                    pasw = Password.getSaltedHash(pasw);
+                    String sql = "insert into USERINFO "+ " (NAME, EMAIL, USERID,PASSWORD,QUE)" + " values (?, ?, ?,?,?)";
+                    ps=con.prepareStatement(sql);
+                    ps.setString(1, txName.getText());
+                    ps.setString(2, txEmail.getText());
+                    ps.setString(3, uname);
+                    ps.setString(4, pasw);
+                    ps.setString(5, txQue.getText());
+                    ps.executeUpdate();
+                    txLabel.setText("Done");
+                    String sql2 = "insert into password "+ " (USERID,PASSWORD)" + " values (?, ?)";
+                    ps=con.prepareStatement(sql2);
+                    ps.setString(1, uname);
+                    ps.setString(2, pasw);
+                    ps.executeUpdate();
+                    }
+                    else{
+                        txLabel.setText("Email is not valid");
+                    }
+                    }
+                    else{
+                        txLabel.setText("Please enter a password greter than 7 digits");
+                    }
+
                 }
                 else{
                     txLabel.setText("Password doesn't match.");
