@@ -5,6 +5,6 @@ Simple and Very fast UI.
 
 Tools and Libraries:
 
-* `JAVA`
-* `fxml`
+* `Java`
+* `JavaFx`
 * `Java Derby`
